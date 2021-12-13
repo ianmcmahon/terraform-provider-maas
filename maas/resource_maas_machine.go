@@ -72,7 +72,6 @@ func resourceMaasMachine() *schema.Resource {
 			"architecture": {
 				Type:     schema.TypeString,
 				Optional: true,
-				Computed: true,
 				Default:  "amd64/generic",
 			},
 			"min_hwe_kernel": {
