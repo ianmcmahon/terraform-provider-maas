@@ -3,6 +3,7 @@ package maas
 import (
 	"context"
 	"fmt"
+	"time"
 
 	"github.com/hashicorp/terraform-plugin-sdk/v2/diag"
 	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
@@ -30,7 +31,9 @@ func resourceMaasInstance() *schema.Resource {
 				return []*schema.ResourceData{d}, nil
 			},
 		},
-
+        Timeouts: &schema.ResourceTimeout{
+            Create: schema.DefaultTimeout(45 * time.Minute),
+        },
 		Schema: map[string]*schema.Schema{
 			"allocate_params": {
 				Type:     schema.TypeSet,
